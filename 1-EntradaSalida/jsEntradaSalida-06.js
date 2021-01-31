@@ -4,8 +4,8 @@ transformarlos a enteros (parseInt) y Sumarlos.
 mostrar el resulto por medio de "ALERT"*/
 function sumar()
 {
-	var primerNum;
-	primerNum=parseInt(txtIdNumeroUno.value);
+	
+	var primerNum=parseInt(txtIdNumeroUno.value);
 	
 	var segunNum=parseInt(txtIdNumeroDos.value);
 	
