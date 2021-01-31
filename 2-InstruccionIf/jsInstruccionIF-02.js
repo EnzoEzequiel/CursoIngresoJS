@@ -7,10 +7,7 @@ function mostrar()
 	{
 		alert("eres mayor de edad");
 	}
-	else
-	{
-		alert("eres menor de edad");
-	}
+	
 	
 
 }//FIN DE LA FUNCIÓN
