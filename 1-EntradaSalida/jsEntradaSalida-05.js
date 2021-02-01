@@ -6,6 +6,8 @@ function mostrar()
 	var nombreIngresado;
 	nombreIngresado=txtIdNombre.value;
 	var edadIngresada=txtIdEdad.value;
-	alert("Usted se llama "+nombreIngresado+ " y tiene "+edadIngresada+ " años");
+	var apellido=prompt("ingrese su apellido");
+	
+	alert("Usted se llama "+nombreIngresado+" " + apellido + " y tiene "+edadIngresada+ " años");
 }
 
