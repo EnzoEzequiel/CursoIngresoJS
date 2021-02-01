@@ -7,8 +7,8 @@ function mostrar()
 	var nombre=window.prompt("ingresa tu nombre");
 
 	txtIdNombre.value=nombre;
-/*
-	var nombreIngresado;
+
+	/*var nombreIngresado;
 	var apellido;
 
 	nombreIngresado="Maria";
@@ -30,7 +30,6 @@ function mostrar()
 	//alert(nombreIngresado);
 
 	*/
-
 
 }
 
