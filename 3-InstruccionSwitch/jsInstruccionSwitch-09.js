@@ -1,3 +1,4 @@
+//FALTA HACER FUNCIONAR
 function mostrar()
 {
 	var estacionIngresada =document.getElementById('txtIdEstacion').value;
