@@ -1,21 +1,20 @@
 //FALTA HACER FUNCIONAR
 function mostrar()
 {
-	var estacionIngresada =document.getElementById('txtIdEstacion').value;
+	let estacionIngresada =document.getElementById('txtIdEstacion').value;
+	let destinoIngresado =document.getElementById('txtIdDestino').value;
 
-	var destinoIngresado =document.getElementById('txtIdDestino').value;
-
-	var precio = 15000;
+	let precio = 15000;
 
 	
-	var porcenUNO=parseInt(precio*0.1); //del 10%
-	var porcenDOS=parseInt(precio*0.2); //del 20%
+	let porcenUNO=parseInt(precio*0.1); //del 10%
+	let porcenDOS=parseInt(precio*0.2); //del 20%
 
 	//aumentos y descuentos
-	var precioMasDiez=precio+porcenUNO;
-	var precioMasVein=precio+porcenDOS;
-	var precioMenosDiez=precio-porcenUNO;
-	var precioMenosVein=precio-porcenDOS;
+	let precioMasDiez=(precio+porcenUNO);
+	let precioMasVein=(precio+porcenDOS);
+	let precioMenosDiez=(precio-porcenUNO);
+	let precioMenosVein=(precio-porcenDOS);
 
 	
 	
@@ -37,9 +36,7 @@ function mostrar()
 			{
 				alert("El precio total del viaje es de: $"+ precioMenosVein);
 			}
-			else {
-				alert("El precio total del viaje es de: $"+);
-			}
+			
 		break;
 
 
