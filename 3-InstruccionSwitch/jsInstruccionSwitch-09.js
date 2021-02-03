@@ -1,13 +1,14 @@
 function mostrar()
 {
-	var estacionIngresada =txtIdEstacion.value;
-	var destinoIngresado =txtIdDestino.value; 
-	
+	var estacionIngresada =document.getElementById('txtIdEstacion').value;
+
+	var destinoIngresado =document.getElementById('txtIdDestino').value;
+
 	var precio = 15000;
 
 	
-	var porcenUNO=precio*0.1; //del 10%
-	var porcenDOS=precio*0.2; //del 20%
+	var porcenUNO=parseInt(precio*0.1); //del 10%
+	var porcenDOS=parseInt(precio*0.2); //del 20%
 
 	//aumentos y descuentos
 	var precioMasDiez=precio+porcenUNO;
@@ -17,99 +18,99 @@ function mostrar()
 
 	
 	
-	switch(estacionIngresada){
+	switch(estacionIngresada)
+	{
 		
 		case "Invierno":
 			
 			if(destinoIngresado == "Bariloche" )
 			{
-				alert("El precio total del viaje es de:"+ precioMasVein);
+				alert("El precio total del viaje es de: $"+ precioMasVein);
 			}
 			
 			if(destinoIngresado == "Cataratas" || destinoIngresado == "Cordoba")
 			{
-				alert("El precio total del viaje es de:"+ precioMenosDiez);
+				alert("El precio total del viaje es de: $"+ precioMenosDiez);
 			}
 			if(destinoIngresado == "Mar del plata" )
 			{
-				alert("El precio total del viaje es de:"+ precioMenosVein);
+				alert("El precio total del viaje es de: $"+ precioMenosVein);
 			}
 			else {
-				alert("El precio total del viaje es de:"+);
+				alert("El precio total del viaje es de: $"+);
 			}
-			break;
+		break;
 
 
 		case "Verano":
 			
 			if(destinoIngresado == "Bariloche" )
 			{
-				alert("El precio total del viaje es de:"+ precioMenosVein);
+				alert("El precio total del viaje es de: $"+ precioMenosVein);
 			}
 			
 			if(destinoIngresado == "Cataratas" || destinoIngresado == "Cordoba")
 			{
-				alert("El precio total del viaje es de:"+ precioMasDiez);
+				alert("El precio total del viaje es de: $"+ precioMasDiez);
 			}
 			if(destinoIngresado == "Mar del plata" )
 			{
-				alert("El precio total del viaje es de:"+ precioMasVein);
+				alert("El precio total del viaje es de: $"+ precioMasVein);
 			}
 			
-			break;
+		break;
 
 
 		case "Otoño":
 
 			if(destinoIngresado == "Bariloche" )
 			{
-				alert("El precio total del viaje es de:"+ precioMasVein);
+				alert("El precio total del viaje es de: $"+ precioMasVein);
 			}
 			
 			if(destinoIngresado == "Cataratas" )
 			{
-				alert("El precio total del viaje es de:"+ precioMasDiez);
+				alert("El precio total del viaje es de: $"+ precioMasDiez);
 			}
 			if(destinoIngresado == "Mar del plata" )
 			{
-				alert("El precio total del viaje es de:"+ precioMasDiez);
+				alert("El precio total del viaje es de: $"+ precioMasDiez);
 			}
 
 			if(destinoIngresado == "Cordoba")
 			{
-				alert("El precio total del viaje es de:"+ precio);
+				alert("El precio total del viaje es de: $"+ precio);
 			}
 			
-			break;
-
-			
+		break;
 
 
 		case "Primavera":
 			
 			if(destinoIngresado == "Bariloche" )
 			{
-				alert("El precio total del viaje es de:"+ precioMasVein);
+				alert("El precio total del viaje es de: $"+ precioMasVein);
 			}
 			
 			if(destinoIngresado == "Cataratas" )
 			{
-				alert("El precio total del viaje es de:"+ precioMasDiez);
+				alert("El precio total del viaje es de: $"+ precioMasDiez);
 			}
 			if(destinoIngresado == "Mar del plata" )
 			{
-				alert("El precio total del viaje es de:"+ precioMasDiez);
+				alert("El precio total del viaje es de: $"+ precioMasDiez);
 			}
 
 			if(destinoIngresado == "Cordoba")
 			{
-				alert("El precio total del viaje es de:"+ precio);
+				alert("El precio total del viaje es de: $"+ precio);
 			}
 			
-			break;
+		break;
 
 		default:
 		break;
+
 	}
 
 }//FIN DE LA FUNCIÓN
