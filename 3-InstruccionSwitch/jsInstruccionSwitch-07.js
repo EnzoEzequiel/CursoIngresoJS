@@ -1,24 +1,24 @@
 function mostrar()
 {
 	var destinoIngresado =txtIdDestino.value;
-	/*INICIO DE LA SENTECIA SWITCH*/
+	
 	switch(destinoIngresado){
-		/* EL PRIMER CASO */
+		
 		case "Cataratas":
-		/* MENSAJE MOSTRADO EN PANTALLA */
-		alert("El dstino esta en el norte")
+		
+		alert("El destino se encuentra en el norte")
 		break;
-		/* EL SEGUNDO CASO */
+		
 		case "Ushuaia":
 		case "Bariloche":
-		/* MENSAJE MOSTRADO EN PANTALLA */
-		alert("El dstino esta en el  sur")
+		
+		alert("El destino se encuentra en el  sur")
 		break;
-		/* EL TERCER CASO */
+		
 		case "Mar del plata":
-		/* MENSAJE MOSTRADO EN PANTALLA */
-		alert("El dstino esta en el este")
+		alert("El destino se encuentra en el este")
 		break;
+		
 		default:
 		break;
 	}	
