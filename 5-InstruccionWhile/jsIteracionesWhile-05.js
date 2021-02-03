@@ -6,7 +6,10 @@ function mostrar()
 	var sexoIngresado;
 	sexoIngresado = prompt("ingrese f ó m .");
 
-
-
-	txtIdSexo.value=sexoIngresado;
+	while (sexoIngresado=="f" || sexoIngresado=="m")
+	{
+		document.getElementById('valuetxtIdSexo').value=sexoIngresado;
+	}
+	alert("texto invalido");
+	
 }//FIN DE LA FUNCIÓN

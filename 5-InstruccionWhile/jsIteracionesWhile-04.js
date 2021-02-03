@@ -3,21 +3,23 @@ al presionar el botón
 pedir un número entre 0 y 9 inclusive.*/
 function mostrar()
 {
-	var numeroIngresado;
-	numeroIngresado = prompt("ingrese un número entre 0 y 10.");//EN LA CONSIGNA DICE DE 0 A 9(????
+	let numeroIngresado;
+	numeroIngresado = prompt("ingrese un número entre 0 y 10. o 11 para terminar.");//EN LA CONSIGNA DICE DE 0 A 9(????
 
-	while(numeroIngresado!="")
+	//no acepta nulo asique pongo dos comillas vacias
+	while(numeroIngresado!="11")
 	{
-		if(numeroIngresado>=-1 && numeroIngresado<10)
+		alert("entre al while");
+		if(numeroIngresado>-1 && numeroIngresado<=12)
 		{
-
-			txtIdNumero.value=numeroIngresado;
+			alert("entre");
+			document.getElementById('txtIdNumero').value=numeroIngresado;
 
 		}
-		
+		document.getElementById('txtIdNumero').value;
 	}
 
-	alert("numero no valido");
-
+	alert("finalizado");
+	mostrar();
 
 }//FIN DE LA FUNCIÓN
