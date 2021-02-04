@@ -6,11 +6,20 @@ en el cuadro de texto "RESULTADO"*/
 function mostrarAumento()
 {
 	var sueldito;
-	sueldito=parseInt(txtIdImporte.value);
+	var porcentajeIngresado;
+	var descuento;
+	var resultado;
 
-	var descuen=sueldito*0.25;
-
-	var resul=sueldito-descuen;
+	//INGRESADOS
+	sueldito=parseInt(txtIdSueldo.value);
 	
-	txtIdResultado.value=resul;
+	porcentajeIngresado=parseInt(prompt("favor de ingresar el porcentaje que quiera aumentarle"));
+
+	descuento=(sueldito*porcentajeIngresado/100);
+
+	resultado=sueldito-descuento;
+
+	
+	document.getElementById('txtIdResultado').value=resultado;
+
 }
