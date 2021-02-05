@@ -15,14 +15,15 @@ function mostrar()
         
         while (respuesta == "si" )
         {
-         
+            
             num = parseInt(prompt("Ingrese un numero "));
             contador =num;
 
-            if (Math.sign(contador) == 1 ) {
-                
+            if (Math.sign(contador) == 1 )
+            {
+            
                 sumaPositivos = sumaPositivos + contador;
-        
+            
             }
             else if (Math.sign(contador)== -1)
             {
@@ -30,7 +31,7 @@ function mostrar()
                 multiplicacionNegativos = (multiplicacionNegativos * contador);
                 
             }
-
+            
             respuesta =prompt("desea continuar?");
             
             
