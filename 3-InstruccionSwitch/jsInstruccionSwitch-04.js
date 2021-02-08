@@ -52,7 +52,7 @@ function mostrar()
 	  	alert("Este mes tiene 31 días");
 	  	break; 
 
-	
+	//correcion: acumular los meses que tengan la misma canidad de dias y poner un solo break al final
 	
 	}
 
