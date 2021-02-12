@@ -12,39 +12,72 @@ hasta que el usuario quiera, mostrar:
 9-Diferencia entre positivos y negativos, (positvos-negativos). */
 function mostrar()
 {
-	let banderaDelPrimero;
-	let numeroIngresado;
-	let numeroMaximo;
-	let numeroMinimo;
 	let respuesta;
-	//iniciar variables
-	banderaDelPrimero="es el primero";
+    let numeroIngresado;
+    let sumaNegativos;
+    sumaNegativos=0;
+    let sumaPositivos;
+    sumaPositivos=0;
+    let contador;
+    contador=0;
+    let cantidadCeros;
+    cantidadCeros=0;
+    let cantidadPositivos;
+    cantidadPositivos=0;
+    let cantidadNegativos;
+    cantidadNegativos=0;
+    let cantidadPares;
+    cantidadPares=0;
+    let promedioPositivos;
+    promedioPositivos=parseInt(promedioPositivos);
+    let promedioNegativos;
+    promedioNegativos=parseInt(promedioNegativos);
+    let diferencia;
+    diferencia=parseInt(diferencia);
+
 	respuesta='si';
 	respuesta =prompt("Ingrese un si para continuar o no para finalizar");
         
         while (respuesta == "si" )
         {
             
-            num = parseInt(prompt("Ingrese un numero "));
-            contador =num;
+            numeroIngresado = parseInt(prompt("Ingrese un numero "));
+            contador =numeroIngresado;
 
+            if(contador==0)
+            {
+                cantidadCeros=cantidadCeros+1;
+            }
             if (Math.sign(contador) == 1 )
             {
-            
                 sumaPositivos = sumaPositivos + contador;
-            
+                cantidadPositivos=cantidadPositivos+1;
             }
-            else if (Math.sign(contador)== -1)
+            if (Math.sign(contador)== -1)
             {
-                
-                multiplicacionNegativos = (multiplicacionNegativos * contador);
-                
+                sumaNegativos = sumaNegativos + contador;
+                cantidadNegativos=cantidadNegativos+1;
             }
+            if(contador % 2 == 0)
+            {
+                cantidadPares=cantidadPares+1;
+            }
+            
             
             respuesta =prompt("desea continuar?");
             
-            
-            document.write("la suma de negativos es :"+sumaNegativos);
         }
+        
+        promedioPositivos=(sumaPositivos/cantidadPositivos);
+        promedioNegativos=(sumaNegativos/cantidadNegativos);
+        diferencia=(sumaPositivos-sumaNegativos);
+            
+        document.write("<br> la suma de negativos es :"+sumaNegativos+ ", la suma de positivos: "+sumaPositivos);
+        document.write("<br> la cantidad de positivos seria: "+cantidadPositivos+ ", la cantidad de negativos: "+cantidadNegativos);
+        document.write("<br> la cantidad de PARES es de "+cantidadPares);
+        document.write("<br> la cantidad de CEROS es de "+cantidadCeros);
+        document.write("<br> el promedio de los numeros positivos es de "+promedioPositivos);
+        document.write("<br> el promedio de los numeros negativos es de "+promedioNegativos);
+        document.write("<br> la diferencia entre positivos y negativos es de  "+diferencia);
 	
 }//FIN DE LA FUNCIÓN

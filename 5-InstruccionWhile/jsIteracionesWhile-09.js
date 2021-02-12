@@ -6,37 +6,43 @@ function mostrar()
 	let banderaDelPrimero;
 	let numeroIngresado;
 	let numeroMaximo;
+    numeroMaximo=parseInt(numeroMaximo);
 	let numeroMinimo;
+    numeroMinimo=parseInt(numeroMinimo);
 	let respuesta;
+    //numeroMinimo=999999999;
+    //numeroMaximo=-999999999;
 	//iniciar variables
 	banderaDelPrimero="es el primero";
 	respuesta='si';
-	respuesta =prompt("Ingrese un si para continuar o no para finalizar");
-        
-        while (respuesta == "si" )
+        while (respuesta == "si")
         {
-            
-            num = parseInt(prompt("Ingrese un numero "));
-            contador =num;
-
-            if (Math.sign(contador) == 1 )
+            numeroIngresado=parseInt(prompt("favor de ingresar un numero: "));
+            //ingreso bandera para saber cual es el numero base de primero
+            if(banderaDelPrimero=="es el primero")
             {
-            
-                sumaPositivos = sumaPositivos + contador;
-            
+                numeroMaximo=numeroIngresado;
+                numeroMinimo=numeroIngresado;
+                banderaDelPrimero="ya no es el primero";
             }
-            else if (Math.sign(contador)== -1)
+            else 
             {
-                
-                multiplicacionNegativos = (multiplicacionNegativos * contador);
-                
+                if(numeroIngresado>numeroMaximo)
+                {
+                    numeroMaximo=numeroIngresado;
+                }
+                if (numeroIngresado<numeroMinimo)
+                {
+                    numeroMinimo=numeroIngresado;
+                }
             }
             
-            respuesta =prompt("desea continuar?");
-            
-            
-            document.getElementById("txtIdMaximo").value = numeroMaximo;
-            document.getElementById("txtIdMinimo").value = numeroMinimo;
+        
+            respuesta=prompt("desea continuar?");
+             
         }
+
+        document.getElementById("txtIdMaximo").value = numeroMaximo;
+        document.getElementById("txtIdMinimo").value = numeroMinimo;
 	
 }//FIN DE LA FUNCIÓN
