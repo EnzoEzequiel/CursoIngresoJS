@@ -23,7 +23,6 @@ function CalcularPrecio ()
    	let marcaIngresada=document.getElementById('Marca').value;
    	let resultado;
    	let precioInicial=35;
-   	let total;
    	let descuentoPorcentaje;
    	
    	/*
@@ -61,6 +60,8 @@ function CalcularPrecio ()
    		document.getElementById('txtIdprecioDescuento').value=resultado;
    	}*/
 
+      ////////////////////////////////////////////////////////////////////////
+      /*
    	//PUNTO A
    	if (cantidadIngresada==6)
    	{
@@ -85,8 +86,206 @@ function CalcularPrecio ()
    	{
    		descuentoPorcentaje=20;
    	}
+      */
+   //TODO SWITCH
+   /*
+      switch(cantidadIngresada)
+      {
+         case 6:
+            descuentoPorcentaje=50;
+         break;
 
-   	let precio=precioInicial*cantidadIngresada;
-   	resultado=precio-(precio*descuentoPorcentaje/100);
-   	document.getElementById('txtIdprecioDescuento').value=resultado;
+         case 5:
+         switch(marcaIngresada)
+         {
+            case "ArgentinaLuz":
+               descuentoPorcentaje=40;
+            break;
+            case "FelipeLamparas":
+               descuentoPorcentaje=30;
+            break;
+            default:
+            descuentoPorcentaje=30;
+            break;
+            
+         }  
+
+         case 4:
+         switch(marcaIngresada)
+         {
+            case "ArgentinaLuz":
+               descuentoPorcentaje=25;
+            break;
+            case "FelipeLamparas":
+               descuentoPorcentaje=25;
+            break;
+            default:
+            descuentoPorcentaje=20;
+            break;
+         }
+
+         case 3:
+         switch(marcaIngresada)
+         {
+            case "ArgentinaLuz":
+               descuentoPorcentaje=15;
+            break;
+            case "FelipeLamparas":
+               descuentoPorcentaje=10;
+            break;
+            default:
+            descuentoPorcentaje=5;
+            break;
+         }
+         
+      }
+      let precioFinal=precioInicial*cantidadIngresada;
+      precioFinal=parseInt(precioFinal);
+      resultado=precioFinal-(precioFinal*descuentoPorcentaje/100);
+      document.getElementById('txtIdprecioDescuento').value=resultado;
+      */
+
+//IF MARCA
+/*
+      switch(cantidadIngresada)
+      {
+         case 6:
+         descuentoPorcentaje=50;
+         break;
+
+         case 5:
+         if(marcaIngresada=="ArgentinaLuz")
+         {
+            descuentoPorcentaje=40;
+         }
+         else
+         {
+            descuentoPorcentaje=30;
+         }
+         break;
+
+         case 4:
+         if(marcaIngresada=="FelipeLamparas"||marcaIngresada=="ArgentinaLuz")
+         {
+            descuentoPorcentaje=25;
+         }
+          else
+         {
+            descuentoPorcentaje=20;
+         }
+         break;
+
+         case 3:
+         if(marcaIngresada=="ArgentinaLuz")
+         {
+            descuentoPorcentaje=15;
+         }
+         if(marcaIngresada=="FelipeLamparas")
+         {
+            descuentoPorcentaje=10;
+         }
+         else
+         {
+            descuentoPorcentaje=5;
+         }
+         break;
+         default:
+            descuentoPorcentaje=0;
+         break;
+      }
+   	let precioFinal=precioInicial*cantidadIngresada;
+      precioFinal=parseInt(precioFinal);
+      resultado=precioFinal-(precioFinal*descuentoPorcentaje/100);
+      if(resultado>120)
+      {
+         let resultadoMasImpuesto;
+         resultadoMasImpuesto=parseInt(resultadoMasImpuesto);
+         resultadoMasImpuesto=resultado+(resultado*0.1);
+         document.getElementById('txtIdprecioDescuento').value="IIBB Usted pago "+resultadoMasImpuesto;
+      }
+      else
+      {
+         document.getElementById('txtIdprecioDescuento').value=resultado;
+      }
+      */
+//IF EN CANTIDAD SWITCH EN MARCA
+      if(cantidadIngresada==6)
+      {
+        descuentoPorcentaje=50;
+      }
+
+      if(cantidadIngresada==5)
+      {
+         switch(marcaIngresada)
+         {
+            case "ArgentinaLuz":
+               descuentoPorcentaje=40;
+            break;
+            case "FelipeLamparas":
+               descuentoPorcentaje=30;
+            break;
+            default:
+            descuentoPorcentaje=30;
+            break;
+            
+         }  
+
+      }
+         
+
+      if(cantidadIngresada==4)
+      {
+         switch(marcaIngresada)
+         {
+            case "ArgentinaLuz":
+               descuentoPorcentaje=25;
+            break;
+            case "FelipeLamparas":
+               descuentoPorcentaje=25;
+            break;
+            default:
+            descuentoPorcentaje=20;
+            break;
+         }
+
+      }
+         
+
+      if(cantidadIngresada==3)
+      {
+         switch(marcaIngresada)
+         {
+            case "ArgentinaLuz":
+               descuentoPorcentaje=15;
+            break;
+            case "FelipeLamparas":
+               descuentoPorcentaje=10;
+            break;
+            default:
+            descuentoPorcentaje=5;
+            break;
+         }
+      }
+
+      else
+      {
+         descuentoPorcentaje=0;
+      }
+
+
+      let precioFinal=precioInicial*cantidadIngresada;
+      precioFinal=parseInt(precioFinal);
+      resultado=precioFinal-(precioFinal*descuentoPorcentaje/100);
+      if(resultado>120)
+      {
+         let resultadoMasImpuesto;
+         resultadoMasImpuesto=parseInt(resultadoMasImpuesto);
+         resultadoMasImpuesto=resultado+(resultado*0.1);
+         document.getElementById('txtIdprecioDescuento').value="IIBB Usted pago con impuestos un total de $"+resultadoMasImpuesto;
+      }
+      else
+      {
+         document.getElementById('txtIdprecioDescuento').value=resultado;
+      }
+      
 }
