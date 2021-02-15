@@ -12,28 +12,31 @@ hasta que el usuario quiera, mostrar:
 9-Diferencia entre positivos y negativos, (positvos-negativos). */
 function mostrar()
 {
+    //DECLARO LAS VARIABLES
 	let respuesta;
     let numeroIngresado;
     let sumaNegativos;
-    sumaNegativos=0;
     let sumaPositivos;
-    sumaPositivos=0;
     let contador;
-    contador=0;
     let cantidadCeros;
-    cantidadCeros=0;
     let cantidadPositivos;
-    cantidadPositivos=0;
     let cantidadNegativos;
-    cantidadNegativos=0;
     let cantidadPares;
-    cantidadPares=0;
     let promedioPositivos;
-    promedioPositivos=parseInt(promedioPositivos);
     let promedioNegativos;
-    promedioNegativos=parseInt(promedioNegativos);
     let diferencia;
+    //INICIALIZO LAS VARIABLES Y LAS PARSEO DE SER NECESARIO
+    sumaNegativos=0;
+    sumaPositivos=0;
+    contador=0;
+    cantidadCeros=0;
+    cantidadPositivos=0;
+    cantidadNegativos=0;
+    cantidadPares=0;
+    promedioPositivos=parseInt(promedioPositivos);
+    promedioNegativos=parseInt(promedioNegativos);
     diferencia=parseInt(diferencia);
+
 
 	respuesta='si';
 	respuesta =prompt("Ingrese un si para continuar o no para finalizar");
@@ -48,12 +51,22 @@ function mostrar()
             {
                 cantidadCeros=cantidadCeros+1;
             }
-            if (Math.sign(contador) == 1 )
+            /*if (Math.sign(contador) == 1 )
             {
                 sumaPositivos = sumaPositivos + contador;
                 cantidadPositivos=cantidadPositivos+1;
             }
             if (Math.sign(contador)== -1)
+            {
+                sumaNegativos = sumaNegativos + contador;
+                cantidadNegativos=cantidadNegativos+1;
+            }*/
+            if (contador>=0)
+            {
+                sumaPositivos = sumaPositivos + contador;
+                cantidadPositivos=cantidadPositivos+1;
+            }
+            if (contador<0)
             {
                 sumaNegativos = sumaNegativos + contador;
                 cantidadNegativos=cantidadNegativos+1;
