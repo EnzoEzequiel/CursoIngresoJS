@@ -13,13 +13,14 @@ function mostrar()
 
 	//TIPO//PRECIO//CANTIDAD DE UNIDADES//MARCA//FABRICANTE
 	//Unidades c/u
+	
 	let unidadesBarbijos=0;
 	let unidadesJabones=0;
 	let unidadesAlcohol=0;
 	//lista de productos
-	/*let barbijos=[];
+	let barbijos=[];
 	let jabones=[];
-	let alcoholes=[];*/
+	let alcoholes=[];
 	//lista de precios
 	let precioBarbijos=[];
 	let precioJabones=[];
@@ -224,4 +225,227 @@ function mostrar()
     document.write("<br> los fabricantes son: " +fabricanteAlcoholes+ " ");
 
 	document.write("<br> gracias vuelva pronto.");
+	
+	//VARIABLES
+    // CARACTERISTICAS DE LOS PRODUCTOS
+    let tipo;
+    let precio;
+    let cantUnidades;
+    let marca; 
+    let fabricante;
+    // DECLARACION DE LAS LISTAS
+    let prodUno;
+    let prodDos;
+    let prodTres;
+    let prodCuatro;
+    let prodCinco;
+    // CONTADOR
+    let contProd;
+
+    contProd = 0;
+    //LISTA DE PRODUCTOS
+	prodGen=[]
+    prodUno = [];
+    prodDos = [];
+    prodTres = [];
+    prodCuatro = [];
+    prodCinco = [];
+
+
+
+    while (contProd <= 4 ){
+
+        switch(contProd)
+		{
+			case 0:
+				// CARGA DE DATOS DEL PRODUCTO
+				tipo = prompt("Ingrese el tipo de producto");
+				prodUno.push(tipo);
+				precio = parseInt(prompt("Ingrese el precio del producto"));
+				if(precio<=300 && precio>=100)
+				{
+					//DECLARACION DE MAYORES Y MENORES
+					
+				    let banderaPrimero="es el primero"
+
+				    if(banderaPrimero=="es el primero")
+		            {
+		                precioMaxBarbijos=precio;
+		                precioMinBarbijos=precio;
+		                banderaPrimero="ya no es el primero";
+		            }
+		            else 
+		            {
+		                if(precioBarbijo>precioMaxBarbijos)
+		                {
+		                    precioMaxBarbijos=precio;
+		                }
+		                else if (precio < precioMinBarbijos)
+		                {
+		                    precioMin=precio;
+		                }
+		            }
+					precio.push(precio);
+				}
+				else
+				{
+					alert("precio no valido, favor de ingresar un precio entre 100 y 300");
+					precioBarbijo=parseInt(prompt("favor de ingresar el precio del producto: "));
+				}
+				// COMPARANDO QUE EL PRECIO ESTE EN EL RANGO CORRECTO
+				/*if (precio >= 100 && precio <= 300){
+					prodUno.push(precio);
+				}
+				else
+				{
+					alert("Valor incorrecto debe estar entre 100 y 300");
+					precio = parseInt(prompt("Ingrese el precio del producto"));
+				}*/
+				//COMPARANDO QUE LAS UNIDADES ESTEN EN RANGO CORRECTO
+				cantUnidades = parseInt(prompt("Ingrese la cantidad de unidades"));
+				if( cantUnidades <= 1000 && cantUnidades >= 1){
+					prodUno.push(cantUnidades);
+				}
+				else if (cantUnidades>1000 && cantUnidades <=0)
+				{
+					alert("error");
+					cantUnidades = parseInt(prompt("Ingrese la cantidad de unidades"));
+				}
+				marca = prompt("Ingrese la marca del producto");
+				prodUno.push(marca);
+				fabricante = prompt("Ingrese el fabricante del producto");
+				prodUno.push(fabricante);
+
+				contProd = contProd + 1;
+				break;
+
+			case 1:
+				tipo = prompt("Ingrese el tipo de producto");
+				prodDos.push(tipo);
+				precio = parseInt(prompt("Ingrese el precio del producto"));
+				// COMPARANDO QUE EL PRECIO ESTE EN EL RANGO CORRECTO
+				if (precio >= 100 && precio <= 300){
+					prodDos.push(precio);
+				}
+				else{
+					alert("Valor incorrecto debe estar entre 100 y 300");
+					precio = parseInt(prompt("Ingrese el precio del producto"));
+				}
+				//COMPARANDO QUE LAS UNIDADES ESTEN EN RANGO CORRECTO
+				cantUnidades = parseInt(prompt("Ingrese la cantidad de unidades"));
+				if( cantUnidades <= 1000 && cantUnidades >=1){
+					prodDos.push(cantUnidades);
+				}
+				else {
+					alert("error");
+					cantUnidades = parseInt(prompt("Ingrese la cantidad de unidades"));
+				}
+				marca = prompt("Ingrese la marca del producto");
+				prodDos.push(marca);
+				fabricante = prompt("Ingrese el fabricante del producto");
+				prodDos.push(fabricante);
+
+				contProd = contProd + 1;
+			break;
+
+			case 2:
+				tipo = prompt("Ingrese el tipo de producto");
+				prodTres.push(tipo);
+				precio = parseInt(prompt("Ingrese el precio del producto"));
+				// COMPARANDO QUE EL PRECIO ESTE EN EL RANGO CORRECTO
+				if (precio >= 100 && precio <= 300){
+					prodTres.push(precio);
+				}
+				else{
+					alert("Valor incorrecto debe estar entre 100 y 300");
+					precio = parseInt(prompt("Ingrese el precio del producto"));
+				}
+				//COMPARANDO QUE LAS UNIDADES ESTEN EN RANGO CORRECTO
+				cantUnidades = parseInt(prompt("Ingrese la cantidad de unidades"));
+				if( cantUnidades <= 1000 && cantUnidades >=1){
+					prodTres.push(cantUnidades);
+				}
+				else {
+					alert("error");
+					cantUnidades = parseInt(prompt("Ingrese la cantidad de unidades"));
+				}
+				marca = prompt("Ingrese la marca del producto");
+				prodTres.push(marca);
+				fabricante = prompt("Ingrese el fabricante del producto");
+				prodTres.push(fabricante);
+
+				contProd = contProd + 1;
+			break;
+
+			case 3:
+				tipo = prompt("Ingrese el tipo de producto");
+				prodCuatro.push(tipo);
+				precio = parseInt(prompt("Ingrese el precio del producto"));
+				// COMPARANDO QUE EL PRECIO ESTE EN EL RANGO CORRECTO
+				if (precio >= 100 && precio <= 300){
+					prodCuatro.push(precio);
+				}
+				else{
+					alert("Valor incorrecto debe estar entre 100 y 300");
+					precio = parseInt(prompt("Ingrese el precio del producto"));
+				}
+				//COMPARANDO QUE LAS UNIDADES ESTEN EN RANGO CORRECTO
+				cantUnidades = parseInt(prompt("Ingrese la cantidad de unidades"));
+				if( cantUnidades <= 1000 && cantUnidades >=1){
+					prodCuatro.push(cantUnidades);
+				}
+				else {
+					alert("error");
+					cantUnidades = parseInt(prompt("Ingrese la cantidad de unidades"));
+				}
+				marca = prompt("Ingrese la marca del producto");
+				prodCuatro.push(marca);
+				fabricante = prompt("Ingrese el fabricante del producto");
+				prodCuatro.push(fabricante);
+
+				contProd = contProd + 1;
+			break;
+
+			case 4:
+				tipo = prompt("Ingrese el tipo de producto");
+				prodCinco.push(tipo);
+				precio = parseInt(prompt("Ingrese el precio del producto"));
+				// COMPARANDO QUE EL PRECIO ESTE EN EL RANGO CORRECTO
+				if (precio >= 100 && precio <= 300){
+					prodCinco.push(precio);
+				}
+				else{
+					alert("Valor incorrecto debe estar entre 100 y 300");
+					precio = parseInt(prompt("Ingrese el precio del producto"));
+				}
+				//COMPARANDO QUE LAS UNIDADES ESTEN EN RANGO CORRECTO
+				cantUnidades = parseInt(prompt("Ingrese la cantidad de unidades"));
+				if( cantUnidades <= 1000 && cantUnidades >=1){
+					prodCinco.push(cantUnidades);
+				}
+				else {
+					alert("error");
+					cantUnidades = parseInt(prompt("Ingrese la cantidad de unidades"));
+				}
+				marca = prompt("Ingrese la marca del producto");
+				prodUno.push(marca);
+				fabricante = prompt("Ingrese el fabricante del producto");
+				prodCinco.push(fabricante);
+
+				contProd = contProd + 1;
+			break;
+
+		}
+
+
+    }
+	prodGen.push(prodUno);
+	prodGen.push(prodDos);
+	prodGen.push(prodTres);
+	prodGen.push(prodCuatro);
+	prodGen.push(prodCinco);
+
+
+
+    
 }
