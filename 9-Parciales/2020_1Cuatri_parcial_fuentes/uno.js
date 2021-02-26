@@ -24,7 +24,7 @@ function mostrar()
 	   contadorProducto++;
 
 	   tipoIngresado=prompt("ingrese tipo de producto" +contadorProducto+ "barvijo, jabon o alcohol");
-	   while(isNaN(tipoIngresado)==falso || tipoIngresado!="barbijo" && tipoIngresado!="jabon" && tipoIngresado!="alcohol")
+	   while(isNaN(tipoIngresado)==false || tipoIngresado!="barbijo" && tipoIngresado!="jabon" && tipoIngresado!="alcohol")
 	   {
 		   tipoIngresado=prompt("error, ingrese denuevo el producto, jabon, barbijo o alcohol.");w
 
