@@ -10,6 +10,7 @@ eleccionMaquina=parseInt(eleccionMaquina);
 
 function comenzar()
 {
+	//.floor redondea 
 	aleatorio = Math.floor(Math.random() * 3 + 1);
     eleccionMaquina = aleatorio;
     console.log(eleccionMaquina);
