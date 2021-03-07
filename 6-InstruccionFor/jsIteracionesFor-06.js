@@ -1,288 +1,248 @@
-/*Para un censo municipal debemos cargar los datos de TODAS las mascotas de nuestra veterinaria
-necesitan saber si es un gato o un perro u "otra cosa",(solo hay esos tres tipos)
-el tipo de pelaje (corto, largo , sin pelo),
-la edad de la mascota (edad validada);
-el nombre (una palabra) 
-la raza  (una palabra) 
-el peso (peso validado) 
-el estadoClinico (enfermo,internado o adopcion)
-la temperaruta corporal
+/*3- validación :
+pedir el ingreso de 10 mascotas
+validar
+tipo ( gato , perro , pájaro y otros)solo esos cuatro tipo
+raza , si es perro (pastor, toy, callejero) y si gato (siamés, turco, Peterbald , generico) y si es de tipo "otros" o pájaro , pedir solo un texto
+edad entre 1 y 20 para gatos y perros , para "otros" entre 1 y 100 , para pájaro 1 de 50
+nombre ( no se permite solo numero)
+mostrar por cada tipo el nombre del mas viejo , solo si hay de ese tipo
+mostrar que raza de gatos tiene mas animales y el promedio de edad de esta raza
 
-y nos piden informar solo si existe
-a)El perro mas pesado
-b)El porcentaje de enfermos sobre el total de mascotas
-c)El nombre de la ultima mascota de tipo "otra cosa"
-d)El animal sin pelo con menor temperatura corporal
-e)Que tipo de mascota(gato o un perro u "otra cosa") que tiene el mayor promedio de temperatura corporal
-f)Sumando gatos y perros que porcentaje del total de mascotas son?
-g)Que estado clinico tiene la menor cantidad de mascotas       
-H)Cual es el promedio de kilos de peso de tomando todas las mascotas 
-i)El nombre y raza del gato sin pelos mas liviano
-*/
+
+1-Descargar el zip, dentro del mismo se encuentran el html, con la consigna, y el js para resolverlo.
+2- "super chino" Se pide el ingreso de mercadería de un supermercado , hasta que el usuario quiera,se pide :
+tipo(limpieza , comestible , otros)solo estos tres tipos
+nombre del producto
+importe del producto (no mayor a 1000 pesos)
+procedencia(importado, nacional, elaborado)
+Peso (no mayor a 30 kilos)
+
+informar SOLO SI HAY
+a) el NOMBRE del mas pesado de los comestibles
+b) el NOMBRE del mas caro de todos los productos
+c) el NOMBRE del mas barato de los elaborados
+d)el tipo de mercadería que mas aparece
+e)el porcentaje de productos elaborados por sobre el total
+f) el promedio de pesos por cada tipo ingresado*/
+
 function mostrar()
 {
-	//declaro las variables
-	let tipoPelaje;
-	let edadMascota; 
-	let nombre;
+    //dclaro variables
+    let tipo;
     let raza;
-	let peso;
-	let estadoClinico; 
-	let temperaturaCorporal;
-	let banderaPrimerPeso;
-	let nombrePerroMasPesado;
-	let pesoPesado;
-	let animalesEnfermos;
-	let respuesta;
-	let contadorAnimales;
-	let porcentajeEnfermos;
-	let banderaMascotaExtrania;
-	let nombreUltimaMascotaExtrania;
-	let sinPeloConBajaTempe;
-	let contadorGatos;
-	let contadorPerros;
-	let contadorOtracosa;
-	let totalAnimales;
-	let totalperrosYgatos;
-	let porcentajePerrosYGatos;
-	let animalesInternados;
-	let animalesAdopcion;
-	let temperaturaPerros;
-	let temperaturaGatos;
-	let temperaturaOtraCosa;
-	let estadoMenosCantidad;
-	let pesoTotal;
-	let promedioPesos;
-	let banderaGatoSinPelo;
-	let gatoSinPeloMasLiviano;
-	let gatoSinPeloMasLivianoRaza;
-	let pesoMasLiviano;
-	let mejorPromedio;
-	let banderaPrimerTemp;
-	//inicializo
-	banderaPrimerPeso=0;
-	animalesEnfermos=0;
-	animalesAdopcion=0;
-	animalesInternados=0;
-	respuesta="si";
-	banderaMascotaExtrania=0;
-	contadorGatos=0;
-	contadorPerros=0;
-	contadorOtracosa=0;
-	temperaturaGatos=0;
-	temperaturaOtraCosa=0;
-	pesoTotal=0;
-	banderaGatoSinPelo=0;
-	banderaPrimerTemp=0;
+    let edad;
+    let nombre;
+    let contador;
+    let nombrePerroMasViejo;
+    let edadPerroMasViejo;
+    let banderaDelGatoMasViejo;
+    let edadGatoMasViejo;
+    let nombreGatoMasViejo;
+    let contadorSiameses;
+    let contadorTurcos;
+    let contadorPeterbald;
+    let contadorGenerico;
+    let acumuladorEdadSiames;
+    let acumuladorEdadTurcos;
+    let acumuladorEdadPeterbald;
+    let acumuladorEdadGenerico;
+    let razaMasGatos;
+    let promedioRazaMasGatos;
+    let banderaDelPajaroMasViejo;
+    let nombrePajaroMasViejo;
+    let edadPajaroMasViejo;
+    let banderaDelOtroMasViejo;
+    let edadOtroMasViejo;
+    let nombreOtroMasViejo;
+    //inicializo banderas
+    banderaDelPerroMasViejo=0;
+    banderaDelGatoMasViejo=0;
+    banderaDelPajaroMasViejo=0;
+    banderaDelOtroMasViejo=0; 
+    //acumuladores
+    acumuladorEdadSiames=0;
+    acumuladorEdadTurcos=0;
+    acumuladorEdadPeterbald=0;
+    acumuladorEdadGenerico=0;
+    //contadores
+    contador=0; 
+    contadorSiameses=0;
+    contadorTurcos=0;
+    contadorPeterbald=0;
+    contadorGenerico=0;
 
-	
-	while(respuesta=="si")
-	{
-		contadorAnimales++;
-		//pido tipo de pelaje
-		tipoPelaje=prompt("favor de ingresar el tipo de peleaje");
-		while(!(tipoPelaje=="corto" ||tipoPelaje=="largo" || tipoPelaje=="sin pelo" ))
+    for(contador;contador<3;contador++)
+    {
+        //VALIDO LAS ENTRADAS
+        tipo=prompt("favor de ingresar el tipo de mascota:( gato , perro , pájaro u otro) ");
+        while(isNaN(tipo)==false)
 		{
-			tipoPelaje=prompt("favor de ingresar el tipo de peleaje");
+			tipo=prompt("error, vuelva a ingresar el tipo de mascota: ");
 		}
-		//pido tipo de mascota
-		edadMascota=parseInt(prompt("favor de ingresar la edad de la mascota"));
-		while(isNaN(edadMascota)==true || edadMascota<0 || edadMascota>70)
+        //raza
+        raza=prompt("favor de ingresar la raza de la mascota, si es perro (pastor, toy, callejero) y si gato (siamés, turco, Peterbald , generico) ");
+        while(isNaN(raza)==false)
 		{
-			edadMascota=parseInt(prompt("error, ingrese una edad valida"));
+			raza=prompt("error, vuelva a ingresar la raza de la mascota: ");
 		}
-		//pido nombre
-		nombre=prompt("favor de ingresar el nombre de la mascota");
-		while(isNaN(nombre)==false)
+        //edad
+        edad=parseInt(prompt("favor de ingresar la edad de la mascota:entre 1 y 20 para gatos y perros , para otros entre 1 y 100 , para pájaro 1 de 50 "));
+        while(!(tipo=="gato" || tipo=="perro" && edad<21 && edad>0 || tipo=="pajaro" && edad<51 && edad>0 || tipo=="otro" && edad<101 && edad>0))
 		{
-			nombre=prompt("error,favor de ingresar el nombre de la mascota");
+			edad=parseInt(prompt("error, vuelva a ingresar la edad de la mascota: "));
 		}
-		//pido raza
-		raza=prompt("ingrese la raza del animal (gato, un perro u otra cosa): ");
-		while(!(raza=="gato" ||raza=="perro" || raza=="otra cosa" ))
+        
+        //nombre
+        nombre=prompt("favor de ingresar el nombre de la mascota: ");
+        while(isNaN(nombre)==false)
 		{
-			raza=prompt("error, reintente ingresar la raza del animal (gato, un perro u otra cosa): ");
+			nombre=prompt("error, vuelva a ingresar el nombre de la mascota: ");
 		}
-
-		//pido peso
-		peso=prompt("favor de ingresar el peso del animal");
-		while(isNaN(peso)==true)
+        //PERRO MAS VIEJO
+        if(banderaDelPerroMasViejo==0 && tipo=="perro")
 		{
-			peso=prompt("favor de ingresar el peso del animal");
+			edadPerroMasViejo=edad;
+            nombrePerroMasViejo=nombre;
+			banderaDelPerroMasViejo++;
 		}
-		pesoTotal=pesoTotal+peso;
-
-		//pido estado clinico
-		estadoClinico=prompt("favor de ingresar el estado clinico de la mascota (enfermo,internado o adopcion)");
-		while(!(estadoClinico=="enfermo" ||estadoClinico=="internado" || estadoClinico=="adopcion" ))
+        else
+        {
+            if(edad>edadPerroMasViejo && tipo=="perro")
+            {
+                nombrePerroMasViejo=nombre;
+                edadPerroMasViejo=edad;
+            }
+            else
+            {
+                nombrePerroMasViejo="ninguno ingresado";
+                edadPerroMasViejo="ninguno ingresado";
+            }
+        }
+        //GATO MAS VIEJO
+        if(banderaDelGatoMasViejo==0 && tipo=="gato")
 		{
-			estadoClinico=prompt("ocurrio un error, favor de ingresar el estado clinico de la mascota (enfermo,internado o adopcion)");
+			edadGatoMasViejo=edad;
+            nombreGatoMasViejo=nombre;
+			banderaDelGatoMasViejo++;
 		}
-		//si esta enfermo sumo al acumulador
-		if(estadoClinico=="enfermo")
+        else
+        {
+            if(edad>edadGatoMasViejo && tipo=="gato")
+            {
+                nombreGatoMasViejo=nombre;
+                edadGatoMasViejo=edad;
+            }
+            
+            {
+                nombreGatoMasViejo="ninguno ingresado";
+                edadGatoMasViejo="ninguno ingresado";
+            }
+        }
+        //PAJAROS
+        if(banderaDelPajaroMasViejo==0 && tipo=="pajaro")
 		{
-			animalesEnfermos++;
+			edadPajaroMasViejo=edad;
+            nombrePajaroMasViejo=nombre;
+			banderaDelPajaroMasViejo++;
 		}
-		else 
+        else
+        {
+            if(edad>edadPajaroMasViejo && tipo=="pajaro")
+            {
+                nombrePajaroMasViejo=nombre;
+                edadPajaroMasViejo=edad;
+            }
+        
+            {
+                nombrePajaroMasViejo="ninguno ingresado";
+                edadPajaroMasViejo="ninguno ingresado";
+            }
+        }
+        //OTRO MAS VIEJO
+        if(banderaDelOtroMasViejo==0 && tipo=="otro")
 		{
-			if(estadoClinico=="internado")
-			{
-				animalesInternados++;
-			}
-			else 
-			{
-				animalesAdopcion++;
-			}
+			edadOtroMasViejo=edad;
+            nombreOtroMasViejo=nombre;
+			banderaDelOtroMasViejo++;
 		}
+        else
+        {
+            if(edad>edadOtroMasViejo && tipo=="otro")
+            {
+                nombreOtroMasViejo=nombre;
+                edadOtroMasViejo=edad;
+            }
+            
+            {
+                nombreOtroMasViejo="ninguno ingresado";
+                edadOtroMasViejo="ninguno ingresado";
+            }
+        }
+        //SWITCH PARA VERIFICAR RAZA DE GATO
+        switch(raza)
+        {
+            case "siames":
+                contadorSiameses++;
+                acumuladorEdadSiames=acumuladorEdadSiames+edad;
+            break;
 
-		//pido temperatura corporal
-		temperaturaCorporal=parseInt(prompt("favor de ingresar la temperatura de la mascota"));
-		while(isNaN(temperaturaCorporal)==true || temperaturaCorporal<0 || temperaturaCorporal>50)
-		{
-			temperaturaCorporal=parseInt(prompt("error, favor de ingresar la temperatura de la mascota"));
-		}
+            case "turco":
+                contadorTurcos++;
+                acumuladorEdadTurcos=acumuladorEdadTurcos+edad;
+            break;
 
+            case "peterbald":
+                contadorPeterbald++;
+                acumuladorEdadPeterbald=acumuladorEdadPeterbald+edad;
+            break;
 
-		//me fijo si es el primero peso ingresado y lo comparo para saber si es el mas pesado
-		if(banderaPrimerPeso==0)
-		{
-			pesoPesado=peso;
-			nombrePerroMasPesado=nombre;
-			banderaPrimerPeso++;
-		}
-		else 
-		{
-			if(peso>pesoPesado)
-			{
-				pesoPesado=peso;
-				nombrePerroMasPesado=nombre;
-			}
+            case "generico":
+                contadorGenerico++;
+                acumuladorEdadGenerico=acumuladorEdadGenerico+edad;
+            break;
 
-		}
+            default:
+            break;
+        }
 
+    }//FIN DEL FOR
+    promedioSiameses=acumuladorEdadSiames/contadorSiameses;
+    promedioTurcos=acumuladorEdadTurcos/contadorTurcos;
+    promedioPeterbald=acumuladorEdadPeterbald/contadorPeterbald;
+    promedioGenerico=acumuladorEdadGenerico/contadorGenerico;
 
-		//saco el porcentaje de animales enfermos
-		porcentajeEnfermos=animalesEnfermos*100/contadorAnimales;
+    if(contadorSiameses>contadorTurcos && contadorSiameses>contadorPeterbald && contadorSiameses>contadorGenerico)
+    {
+        razaMasGatos="Siames";
+        promedioRazaMasGatos=promedioSiameses;
+    } 
+    else 
+    {
+        if(contadorTurcos>contadorSiameses && contadorTurcos>contadorPeterbald && contadorTurcos>contadorGenerico)
+        {
+            razaMasGatos="Turco";
+            promedioRazaMasGatos=promedioTurcos;
+        }
+        else if(contadorPeterbald>contadorSiameses && contadorPeterbald>contadorTurcos && contadorPeterbald>contadorGenerico)
+        {
+            razaMasGatos="Peterbald";
+            promedioRazaMasGatos=promedioPeterbald;
+        }
+        else
+        {
+            razaMasGatos="generico";
+            promedioRazaMasGatos=promedioGenerico;
+        }
+    }
 
-		//uso bandera para saber si la mascota de raza "otra cosa" ya fue ingresada
-		if(banderaMascotaExtrania==0 && raza=="otra cosa")
-		{
-			nombreUltimaMascotaExtrania=nombre;
-		}
-		else 
-		{
-			nombreUltimaMascotaExtrania=nombre;
-		}
+    
 
-		//banderas y mas banderas
-		if(banderaPrimerTemp==0)
-		{
-			temperaturaMinima=temperaturaCorporal;
-			banderaPrimerTemp++;
-		}
-		else 
-		{
-			if(tipoPelaje=="sin pelo" && temperatura<temperaturaMinima)
-			{
-				temperaturaMinima=temperatura;
-				sinPeloConBajaTempe=nombre;
-			}
+    console.log("el mas viejo de los perros es: "+nombrePerroMasViejo);
+    console.log("el mas viejo de los gatos es: "+nombreGatoMasViejo);
+    console.log("el mas viejo de los pajaros es: "+nombrePajaroMasViejo);
+    console.log("el mas viejo de los otros es: "+nombreOtroMasViejo);
 
-		}
-
-		//me fijo con un switch el punto E
-		switch(raza)
-		{
-			case "gato":
-				contadorGatos++;
-				temperaturaGatos=temperaturaGatos+temperaturaCorporal;
-			break;
-
-			case "perro":
-				contadorPerros++;
-				temperaturaPerros=temperaturaPerros+temperaturaCorporal;
-			break;
-
-			case "otra cosa":
-				contadorOtracosa++;
-				temperaturaOtraCosa=temperaturaOtraCosa+temperaturaCorporal;
-			break;
-		}
-		//nombre y raza DEL GATO sin pelo mas liviano
-		if(banderaGatoSinPelo==0 && raza=="gato" && tipoPelaje=="sin pelo")
-		{
-			pesoMasLiviano=peso;
-			gatoSinPeloMasLiviano=nombre;
-			gatoSinPeloMasLivianoRaza=raza;
-		}
-		else 
-		{
-			if(raza=="gato" && tipoPelaje=="sin pelo" && peso<pesoMasLiviano)
-			{
-				pesoMasLiviano=peso;
-				gatoSinPeloMasLiviano=nombre;
-				gatoSinPeloMasLivianoRaza=raza;
-			}
-		}
+    console.log("la raza de gatos que tiene mas animales es: "+razaMasGatos+ " con un promedio de: "+promedioRazaMasGatos.toFixed());
 
 
-		respuesta =prompt("Ingrese un si para continuar o no para finalizar");
-
-	}//FIN DEL WHILE DE LA RESPUESTA
-
-	promedioGatos=temperaturaGatos/contadorGatos;
-	promedioPerros=temperaturaPerros/contadorPerros;
-	promedioOtraCosa=temperaturaOtraCosa/contadorOtracosa;
-
-	if(promedioGatos>promedioPerros && promedioGatos>promedioOtraCosa)
-	{
-		mejorPromedio=promedioGatos;
-	}
-	else
-	{
-		if(promedioPerros>promedioGatos && promedioPerros>promedioOtraCosa)
-		{
-			mejorPromedio=promedioPerros;
-		}
-		else
-		{
-			mejorPromedio=promedioOtraCosa;
-		}
-	}
-
-	//porcentaje perros y gatos
-	totalperrosYgatos=contadorGatos+contadorPerros;
-	totalAnimales=contadorGatos+contadorPerros+contadorOtracosa;
-	porcentajePerrosYGatos=(totalperrosYgatos*100)/totalAnimales;
-
-    //ESTADO CLINICO CON MENOR CANTIDAD MASCOTAS
-	if(animalesAdopcion<animalesEnfermos && animalesAdopcion<animalesInternados)
-	{
-		estadoMenosCantidad=animalesAdopcion;
-	}
-	else
-	{
-		if(animalesEnfermos<animalesAdopcion && animalesEnfermos<animalesInternados)
-		{
-			estadoMenosCantidad=animalesEnfermos;
-		}
-		else
-		{
-			estadoMenosCantidad=animalesInternados;
-		}
-	}
-
-	//PROMEDIO DE PESO
-	promedioPesos=pesoTotal/contadorAnimales;
-
-	console.log("El perro mas pesado es "+nombrePerroMasPesado);
-	console.log("El porcentaje de enfermos sobre el total de mascotas es "+porcentajeEnfermos);
-	console.log("El nombre de la ultima mascota de tipo otra cosa es "+nombreUltimaMascotaExtrania);
-	console.log("El animal sin pelo con menor temperatura corporal es "+sinPeloConBajaTempe);
-	console.log("tipo de mascota, gato, perro u otra que tiene el mayor promedio de temperatura corporal es"+mejorPromedio);
-	console.log("porcentaje del total de perros y gatos es "+porcentajePerrosYGatos);
-	console.log("eñ estado clinico que tiene la menor cantidad de mascotas es "+estadoMenosCantidad);    
-	console.log("promedio de kilos de peso de tomando todas las mascotas es de "+promedioPesos+ "Kg");
-	console.log("El nombre y raza del gato sin pelos mas liviano es "+gatoSinPeloMasLiviano+ " pesando: "+gatoSinPeloMasLivianoRaza+ "Kg");
-
-}//FIN DE LA FUNCIÓN
+}
