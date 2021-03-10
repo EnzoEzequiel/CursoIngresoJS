@@ -74,11 +74,11 @@ function mostrar()
     respuesta="si";
 
     //INICIO WHILE:
-    while(respues=="si")
+    while(respuesta=="si")
     {
         totalProductos++;
         tipo=prompt("favor de ingresar el tipo del producto (limpieza , comestible , otros): ");
-        while(isNaN(tipo)==false)
+        while(!(tipo=="limpieza" || tipo=="comestible" ||tipo=="otros"))
         {
             tipo=prompt("error, favor de ingresar el tipo de producto (limpieza , comestible , otros): ");
         }
@@ -109,7 +109,7 @@ function mostrar()
 
 
         procedencia=prompt("favor de ingresar la procedencia del producto (importado, nacional, elaborado): ");
-        while(isNaN(procedencia)==false)
+        while(!(procedencia=="importado" || procedencia=="nacional" || procedencia=="elaborado"))
         {
             procedencia=prompt("error, favor de ingresar el procedencia de producto (importado, nacional, elaborado): ");
         }
