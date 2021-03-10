@@ -27,6 +27,184 @@ f) el promedio de pesos por cada tipo ingresado*/
 
 function mostrar()
 {
+    //declaro las variables:
+    let tipo;
+    let nombreProducto;
+    let importeProducto;
+    let prodecencia;
+    let peso;
+    let respuesta;
+    let comestibleMasPesado;
+    let productoMasCaro;
+    let elaboradoMasBarato;
+    let contadorLimpieza;
+    let contadorComestible;
+    let contadorOtros;
+    let porcentajeElaborados;
+    let promedioPesoLimpieza;
+    let promedioPesoComestible;
+    let promedioPesoOtros;
+    let banderaMasPesado;
+    let banderaMasCaro;
+    let banderaMasBarato;
+    let pesoMasPesado;
+    let precioMasCaro;
+    let precioMasBarato;
+    let productoMasAparece;
+    let contadorElaborados;
+    let totalProductos;
+    let pesoComestible;
+    let pesoLimpieza;
+    let pesoOtros;
+
+    //inicializo
+    contadorLimpieza=0;
+    contadorComestible=0;
+    contadorOtros=0;
+    contadorElaborados=0;
+    banderaMasBarato=0;
+    banderaMasCaro=0;
+    banderaMasPesado=0;
+    totalProductos=0;
+    pesoComestible=0;
+    pesoLimpieza=0;
+    pesoOtros=0;
+
+
+    respuesta="si";
+
+    //INICIO WHILE:
+    while(respues=="si")
+    {
+        totalProductos++;
+        tipo=prompt("favor de ingresar el tipo del producto (limpieza , comestible , otros): ");
+        while(isNaN(tipo)==false)
+        {
+            tipo=prompt("error, favor de ingresar el tipo de producto (limpieza , comestible , otros): ");
+        }
+        
+
+        nombreProducto=prompt("favor de ingresar el nombre del producto : ");
+        while(isNaN(nombreProducto)==false)
+        {
+            nombreProducto=prompt("error, favor de ingresar el nombre del producto: ");
+        }
+
+        importeProducto=parseInt(prompt("favor de ingresar el importe del Producto (no mayor a 1000 pesos)"));
+        while(isNaN(importeProducto)==true || importeProducto>1000)
+        {
+            importeProducto=parseInt(prompt("error, favor de ingresar el importe del Producto (no mayor a 1000 pesos): "));
+        }
+        if(banderaMasCaro==0)
+        {
+            productoMasCaro=nombreProducto;
+            precioMasCaro=importeProducto;
+            banderaMasCaro=1;
+        }
+        else if(importeProducto>precioMasCaro)
+        {
+            productoMasCaro=nombreProducto;
+            precioMasCaro=importeProducto;
+        }
+
+
+        procedencia=prompt("favor de ingresar la procedencia del producto (importado, nacional, elaborado): ");
+        while(isNaN(procedencia)==false)
+        {
+            procedencia=prompt("error, favor de ingresar el procedencia de producto (importado, nacional, elaborado): ");
+        }
+
+        if(banderaMasBarato==0 && prodecencia=="elaborado")
+        {
+            elaboradoMasBarato=nombreProducto;
+            precioMasBarato=importeProducto;
+            banderaMasBarato++;
+        }
+        else if(importeProducto<precioMasBarato)
+        {
+            elaboradoMasBarato=nombreProducto;
+            precioMasBarato=importeProducto;
+        }
+        else if(prodecencia=="elaborado")
+        {
+            contadorElaborados++;
+        }
+
+        peso=parseInt(prompt("favor de ingresar el peso del Producto (no mayor a 30 kilos)"));
+        while(isNaN(peso)==true || peso>30)
+        {
+            peso=parseInt(prompt("error, favor de ingresar el peso del Producto (no mayor a 30 kilos): "));
+        }
+        if(banderaMasPesado==0 && tipo=="comestible")
+        {
+            comestibleMasPesado=nombreProducto;
+            pesoMasPesado=peso;
+            banderaMasPesado++;
+        }
+        else if(peso>pesoMasPesado)
+        {
+            comestibleMasPesado=nombreProducto;
+            pesoMasPesado=peso;
+        }
+        switch(tipo)
+        {
+            case "limpieza":
+                contadorLimpieza++;
+                pesoLimpieza=pesoLimpieza+peso;
+            break;
+            case "comestible":
+                contadorComestible++;
+                pesoComestible=pesoComestible+peso;
+            break;
+            case "otros":
+                contadorOtros++;
+                pesoOtros=pesoOtros+peso;
+            break;
+        }
+
+        respuesta=prompt("oprima si para continuar o NO para finalizar: ");
+    }//termina el while
+    if(contadorComestible>contadorOtros && contadorComestible>contadorLimpieza)
+    {
+        productoMasAparece="comestibles";
+    }
+    else 
+    {
+        if(contadorOtros>contadorComestible && contadorOtros>contadorLimpieza)
+        {
+            productoMasAparece="Otros";
+        }
+        else
+        {
+            productoMasAparece="limpieza";
+        }
+
+        
+    }
+    porcentajeElaborados=(contadorElaborados*100)/totalProductos;
+    promedioPesoComestible=pesoComestible/contadorComestible;
+    promedioPesoLimpieza=pesoLimpieza/contadorLimpieza;
+    promedioPesoOtros=pesoOtros/contadorOtros;
+
+    document.write("<br>el mas pesado de los combustibles es: "+comestibleMasPesado+" con un peso de "+pesoMasPesado);
+    document.write("<br>el NOMBRE del mas caro de todos los productos es: "+productoMasCaro+" con un precio de: "+precioMasCaro);
+    document.write("<br>el NOMBRE del mas barato de los elaborados es: "+elaboradoMasBarato+ " con un precio de: "+precioMasBarato);
+    document.write("<br>el tipo de mercadería que mas aparece es: "+productoMasAparece);
+    document.write("<br>el porcentaje de productos elaborados es de: "+porcentajeElaborados);
+    document.write("<br> el promedio de pesos es: ");
+    document.write("<br> comestibles: "+promedioPesoComestible);
+    document.write("<br> limpieza: "+promedioPesoLimpieza);
+    document.write("<br> otros: "+promedioPesoOtros);
+
+    
+
+
+
+
+
+
+    /*
+    //CONTADOR DE ANIMALES:
     //dclaro variables
     let tipo;
     let raza;
@@ -244,5 +422,5 @@ function mostrar()
 
     console.log("la raza de gatos que tiene mas animales es: "+razaMasGatos+ " con un promedio de: "+promedioRazaMasGatos.toFixed());
 
-
+    */
 }
